@@ -1,0 +1,27 @@
+{
+  "name": "utilities_nickhedberg_me",
+  "version": "1.0.0",
+  "description": "Web utilities for me",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack-build.config.js",
+    "dev" : "node webpack-server.js"
+  },
+  "author": "Nick Hedberg",
+  "license": "ISC",
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "bf-solid": "^2.3.2",
+    "css-loader": "^0.25.0",
+    "es6-promise": "^3.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "jquery": "^3.1.0",
+    "lodash": "^4.15.0",
+    "node-sass": "^3.9.3",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}

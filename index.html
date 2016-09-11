@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        <link href="{{ static_url('build/style.css') }}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="col clearfix xs-col-12 xs-p1">
+            <div class="col clearfix xs-col-12 md-col-4 md-offset-4">
+                <h2>JSON</h2>
+                <form method="post" action="api/json">
+                    <textarea name="data"></textarea>
+                    <input type="checkbox" name="sort_keys" value="True">Sort Keys</input>
+                    <button type="submit">go</button>
+                </form>
+                <h2>URL Encode</h2>
+                <form method="post" action="api/encode">
+                    <textarea name="data"></textarea>
+                    <input type="checkbox" name="decode" value="True">Decode</input>
+                    <button type="submit">go</button>
+                </form>
+                <h2>HTML Escape</h2>
+                <form method="post" action="api/entity">
+                    <textarea name="data"></textarea>
+                    <button type="submit">go</button>
+                </form>
+                <h2>Markdown</h2>
+                <form method="post" action="api/markdown">
+                    <textarea name="data"></textarea>
+                    <button type="submit">go</button>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="{{ static_url('build/main.js') }}" charset="utf-8"></script>
+    </body>
+</html>
