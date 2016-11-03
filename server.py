@@ -4,6 +4,7 @@ import tornado.web
 import json
 import urllib
 import markdown
+import base64
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -43,6 +44,18 @@ class MarkdownHandler(tornado.web.RequestHandler):
         self.set_header("Content-Type", "text/plain")
         self.write(response)
 
+class Base64Handler(tornado.web.RequestHandler):
+    def post(self):
+        data = self.get_body_argument('data', False)
+        decode = self.get_body_argument('decode', False)
+        if(decode):
+            response = base64.b64decode(data)
+        else :
+            response = base64.b64encode(data)
+
+        self.set_header("Content-Type", "text/plain")
+        self.write(response)
+
 def make_app():
     debug = True
     app_settings = {
@@ -62,11 +75,12 @@ def make_app():
         (r"/api/encode", EncodeHandler),
         (r"/api/entity", EntityHandler),
         (r"/api/markdown", MarkdownHandler),
+        (r"/api/b64", Base64Handler)
     ]
 
     return tornado.web.Application(routes, **app_settings)
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(8888)
+    app.listen(3000)
     tornado.ioloop.IOLoop.current().start()

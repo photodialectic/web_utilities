@@ -30,6 +30,12 @@
                     <textarea name="data"></textarea>
                     <button type="submit">go</button>
                 </form>
+                <h2>Base64</h2>
+                <form method="post" action="api/b64">
+                    <textarea name="data"></textarea>
+                    <input type="checkbox" name="decode" value="True">Decode</input>
+                    <button type="submit">go</button>
+                </form>
             </div>
         </div>
         <script type="text/javascript" src="{{ static_url('build/main.js') }}" charset="utf-8"></script>

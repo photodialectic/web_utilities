@@ -4,7 +4,7 @@ This is small app for running some really basic web-tools like JSON pretty print
 ##Backend Setup
 
 ```
-virturalenv ENV
+virtualenv ENV
 source ENV/bin/activate
 pip install -r requirements.txt
 ```
@@ -27,3 +27,4 @@ npm run dev
 python server.py
 ```
 
+Your app should be running at http://localhost:3000/
