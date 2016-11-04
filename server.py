@@ -57,7 +57,7 @@ class Base64Handler(tornado.web.RequestHandler):
         self.write(response)
 
 def make_app():
-    debug = True
+    debug = False
     app_settings = {
         'debug' : debug,
         'static_path': os.path.join(BASE_DIR, 'static'),

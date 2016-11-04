@@ -9,32 +9,33 @@
         <div class="col clearfix xs-col-12 xs-p1">
             <div class="col clearfix xs-col-12 md-col-4 md-offset-4">
                 <h2>JSON</h2>
-                <form method="post" action="api/json">
-                    <textarea name="data"></textarea>
-                    <input type="checkbox" name="sort_keys" value="True">Sort Keys</input>
-                    <button type="submit">go</button>
+                <form class="xs-mb3" method="post" action="api/json">
+                    <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
+                    <input class="checkbox" type="checkbox" id="sort_keys" name="sort_keys" value="True"/>
+                    <label for="sort_keys">Sort Keys</label>
+                    <button class="button" type="submit">Go</button>
                 </form>
                 <h2>URL Encode</h2>
-                <form method="post" action="api/encode">
-                    <textarea name="data"></textarea>
-                    <input type="checkbox" name="decode" value="True">Decode</input>
-                    <button type="submit">go</button>
+                <form class="xs-mb3" method="post" action="api/encode">
+                    <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
+                    <button class="button" type="submit">Encode</button>
+                    <button name="decode" value="True" class="button" type="submit">Decode</button>
                 </form>
                 <h2>HTML Escape</h2>
-                <form method="post" action="api/entity">
-                    <textarea name="data"></textarea>
-                    <button type="submit">go</button>
+                <form class="xs-mb3" method="post" action="api/entity">
+                    <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
+                    <button class="button" type="submit">Go</button>
                 </form>
                 <h2>Markdown</h2>
-                <form method="post" action="api/markdown">
-                    <textarea name="data"></textarea>
-                    <button type="submit">go</button>
+                <form class="xs-mb3" method="post" action="api/markdown">
+                    <textarea class="xs-mb1 xs-col-12"  name="data"></textarea>
+                    <button class="button" type="submit">Go</button>
                 </form>
                 <h2>Base64</h2>
-                <form method="post" action="api/b64">
-                    <textarea name="data"></textarea>
-                    <input type="checkbox" name="decode" value="True">Decode</input>
-                    <button type="submit">go</button>
+                <form class="xs-mb3" method="post" action="api/b64">
+                    <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
+                    <button class="button" type="submit">Encode</button>
+                    <button name="decode" value="True" class="button" type="submit">Decode</button>
                 </form>
             </div>
         </div>
