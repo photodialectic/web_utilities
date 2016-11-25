@@ -1,7 +1,7 @@
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var Promise = require('es6-promise').Promise; //polyfill for old node versions
 var webpack = require('webpack');
+require('es6-promise/auto');
 
 module.exports = {
   entry: [
@@ -9,7 +9,7 @@ module.exports = {
     './static/src/style.scss'
   ],
   output: {
-   filename: './static/build/index.jsx',
+   filename: './static/build/index.js',
    cssFilename: './static/build/style.css',
   },
   resolve: {

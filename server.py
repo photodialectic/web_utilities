@@ -93,7 +93,8 @@ class HashHandler(tornado.web.RequestHandler):
         self.write(m.hexdigest())
 
 def make_app():
-    debug = False
+    debug = True
+
     app_settings = {
         'debug' : debug,
         'static_path': os.path.join(BASE_DIR, 'static'),
@@ -101,7 +102,7 @@ def make_app():
         'static_url_prefix' : '/static/',
     }
 
-    if(debug):
+    if debug:
         app_settings['static_url_prefix'] = '//localhost:6121/static/'
 
 
