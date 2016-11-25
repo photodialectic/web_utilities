@@ -5,11 +5,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './static/src/main.js',
+    './static/src/index.jsx',
     './static/src/style.scss'
   ],
   output: {
-   filename: './static/build/main.js',
+   filename: './static/build/index.jsx',
    cssFilename: './static/build/style.css',
   },
   resolve: {
@@ -18,11 +18,13 @@ module.exports = {
   module: {
    loaders: [
      {
-       test: /\.html$/,
-       loader: 'mustache'
+       test: /\.(js|jsx)$/,
+       loaders: ['babel', 'babel?presets[]=es2015&presets[]=react'],
+       exclude: /node_modules/,
+       include: path.join(__dirname, 'static/src')
      },
      {
-       test: /\.scss$/,
+       test: /\.(sass|scss)$/,
        loader: ExtractTextPlugin.extract('style', 'css!sass')
      }
    ]
