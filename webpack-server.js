@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack-build.config');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var server_port = 6121;
+var server_port = 10004;
 
 config.entry = [
   'webpack-dev-server/client?http://localhost:' + server_port,

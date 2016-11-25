@@ -27,4 +27,4 @@ npm run dev
 python server.py
 ```
 
-Your app should be running at http://localhost:3000/
+Your app should be running at http://localhost:10003/
