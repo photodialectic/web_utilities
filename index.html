@@ -24,7 +24,8 @@
                 <h2>HTML Escape</h2>
                 <form class="xs-mb3" method="post" action="api/entity">
                     <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
-                    <button class="button" type="submit">Go</button>
+                    <button class="button" type="submit">Escape</button>
+                    <button name="decode" value="True" class="button" type="submit">Unescape</button>
                 </form>
                 <h2>Markdown</h2>
                 <form class="xs-mb3" method="post" action="api/markdown">
@@ -36,6 +37,18 @@
                     <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
                     <button class="button" type="submit">Encode</button>
                     <button name="decode" value="True" class="button" type="submit">Decode</button>
+                </form>
+                <h2>Hasher</h2>
+                <form class="xs-mb3" method="post" action="api/hash">
+                    <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
+                    <button class="button" type="submit">md5</button>
+                    <button name="sha1" value="True" class="button" type="submit">sha1</button>
+                </form>
+                <h2>Bookmarklet</h2>
+                <form class="xs-mb3" method="post" action="api/bookmark">
+                    <textarea class="xs-mb1 xs-col-12" name="data"></textarea>
+                    <button class="button" type="submit">Get</button>
+                    <button name="text_only" value="True" class="button" type="submit">Text Only</button>
                 </form>
             </div>
         </div>

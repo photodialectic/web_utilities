@@ -1,10 +1,14 @@
 import os.path
 import tornado.ioloop
 import tornado.web
+import tornado.escape
 import json
 import urllib
 import markdown
 import base64
+import uglipyjs
+import hashlib
+import cgi
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -35,7 +39,13 @@ class EncodeHandler(tornado.web.RequestHandler):
 
 class EntityHandler(tornado.web.RequestHandler):
     def post(self):
-        self.write('Encode stuff')
+        data = self.get_body_argument('data', False)
+        decode = self.get_body_argument('decode', False)
+        self.set_header("Content-Type", "text/plain")
+        if decode:
+            self.write(tornado.escape.xhtml_unescape(data))
+        else:
+            self.write(tornado.escape.xhtml_escape(data))
 
 class MarkdownHandler(tornado.web.RequestHandler):
     def post(self):
@@ -56,6 +66,32 @@ class Base64Handler(tornado.web.RequestHandler):
         self.set_header("Content-Type", "text/plain")
         self.write(response)
 
+class BookmarkHandler(tornado.web.RequestHandler):
+    def post(self):
+        data = self.get_body_argument('data', False)
+        response = uglipyjs.compile(data, {'compress': True})
+        text_only = self.get_body_argument('text_only', False)
+        bookmark = 'javascript:(function(){{ {} }})();'.format(response)
+        if(text_only):
+            self.set_header("content-type", "text/plain")
+            self.write(bookmark)
+        else:
+            self.set_header("content-type", "text/html")
+            self.write('<a href=\'{}\'>Drag me to bookmarks bar</a>'.format(bookmark))
+
+class HashHandler(tornado.web.RequestHandler):
+    def post(self):
+        data = self.get_body_argument('data', False)
+        sha1 = self.get_body_argument('sha1', False)
+        if sha1:
+            m = hashlib.sha1()
+        else:
+            m = hashlib.md5()
+
+        m.update(data)
+        self.set_header("content-type", "text/html")
+        self.write(m.hexdigest())
+
 def make_app():
     debug = False
     app_settings = {
@@ -75,12 +111,14 @@ def make_app():
         (r"/api/encode", EncodeHandler),
         (r"/api/entity", EntityHandler),
         (r"/api/markdown", MarkdownHandler),
-        (r"/api/b64", Base64Handler)
+        (r"/api/b64", Base64Handler),
+        (r"/api/bookmark", BookmarkHandler),
+        (r"/api/hash", HashHandler)
     ]
 
     return tornado.web.Application(routes, **app_settings)
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(3000)
+    app.listen(10003)
     tornado.ioloop.IOLoop.current().start()
