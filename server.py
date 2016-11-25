@@ -103,7 +103,7 @@ def make_app():
     }
 
     if debug:
-        app_settings['static_url_prefix'] = '//localhost:6121/static/'
+        app_settings['static_url_prefix'] = '//localhost:10004/static/'
 
 
     routes = [
