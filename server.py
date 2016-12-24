@@ -93,7 +93,7 @@ class HashHandler(tornado.web.RequestHandler):
         self.write(m.hexdigest())
 
 def make_app():
-    debug = True
+    debug = False
 
     app_settings = {
         'debug' : debug,
